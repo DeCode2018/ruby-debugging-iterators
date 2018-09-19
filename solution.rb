@@ -1,3 +1,4 @@
+require "pry"
 # All these methods take an array of numbers as an argument and return a
 # new array / hash without modifying the original
 
@@ -6,19 +7,18 @@
 # e.g. squared_numbers([4, 9]) returns [16, 81]
 def squared_numbers(numbers)
   i = 0
-
+  squared = []
   while i < numbers.length do
-    numbers[i] = numbers[i] * numbers[i]
+    squared << numbers[i] * numbers[i]
     i += 1
   end
-
-  numbers 
+  squared
 end
 
 # Return a new array of only the even numbers
 # e.g. even_numbers([3, 5, 2, 8, 1]) returns [8, 2]
 def even_numbers(numbers)
-  numbers.collect do |number|
+  numbers.select do |number|
     (number % 2) == 0
   end
 end
@@ -32,9 +32,11 @@ def numbers_hash(numbers)
 
   numbers.each do |number|
     if (number % 2) == 0
-      hash[:even] = [number]
+      hash[:even] << number
     else
-      hash[:odd] = [number]
+      hash[:odd] << number
     end
+
   end
+  hash
 end
